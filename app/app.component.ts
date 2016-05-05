@@ -6,76 +6,96 @@ export class Hero {
 }
 
 @Component({
-  selector: 'my-app';
+  selector: 'my-app',
   template:`
-<h2>My Heroes</h2>
-    <ul class="heroes">
-      <li *ngFor="let hero of heroes"
-        [class.selected]="hero === selectedHero"
-        (click)="onSelect(hero)">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
-      </li>
-    </ul>
-<div *ngIf="selectedHero">
-  <h2>{{selectedHero.name}} details!</h2>
-  <div><label>id: </label>{{selectedHero.id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-  </div>
-</div>
-  `
-  styles:[`
-  .selected {
-    background-color: #CFD8DC !important;
-    color: white;
-  }
-  .heroes {
-    margin: 0 0 2em 0;
-    list-style-type: none;
-    padding: 0;
-    width: 15em;
-  }
-  .heroes li {
-    cursor: pointer;
-    position: relative;
-    left: 0;
-    background-color: #EEE;
-    margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
-    border-radius: 4px;
-  }
-  .heroes li.selected:hover {
-    background-color: #BBD8DC !important;
-    color: white;
-  }
-  .heroes li:hover {
-    color: #607D8B;
-    background-color: #DDD;
-    left: .1em;
-  }
-  .heroes .text {
-    position: relative;
-    top: -3px;
-  }
-  .heroes .badge {
-    display: inline-block;
-    font-size: small;
-    color: white;
-    padding: 0.8em 0.7em 0 0.7em;
-    background-color: #607D8B;
-    line-height: 1em;
-    position: relative;
-    left: -1px;
-    top: -4px;
-    height: 1.8em;
-    margin-right: .8em;
-    border-radius: 4px 0 0 4px;
-  }
+  <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand"  href="#">
+            Kasetsart University
+          </a>
+        </div>
+        <div class=" navbar-right">
+          <a class="navbar-brand"  href="#">
+              Registration System
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="login-page">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">KU Student ID</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Your ID">
+              </div>
+            <button type="login" class="btn btn-default">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    </body>
+`,
+styles: [`
+  body{
+  font-family: 'Open Sans', sans-serif;
+  /*Backgroud-Colour*/
+  background: #76b852; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+  background: -o-linear-gradient(right, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8DC26F);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  margin: 0 auto 0 auto;
+  width:100%;
+  text-align:center;
+  margin: 0px 0px 20px 0px;
+}
+.brand-img {
+    width: 50px;
+}
+form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+form button:hover,form button:active,form button:focus {
+  background: #43A047;
+}
+form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.login-page {
+
+  padding: 8% 0 0;
+  margin: auto;
+}
 `]
 })
-export class AppComponent { 
+export class AppComponent {
 	title = 'Tour of Heroes';
 	heroes = HEROES;
 	selectedHero: Hero;
