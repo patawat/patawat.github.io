@@ -1,26 +1,28 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
-import { EnrollComponent } from './Enroll.component';
-import { Student }    from './student';
+import { EnrollmentComponent } from './enroll.component';
 
 @Component({
-  //selector: 'my-app',
-  // templateUrl: './view/Enrollment.html',
-  // styleUrls: ['./styles/Enrollment.css']
-  templateUrl: './view/login.html',
-  styleUrls: ['./styles/login.css']
+  selector: 'my-app',
+  template: `
+    <h1>{{title}}</h1>
+
+    <a [routerLink]="['Enroll']">Enroll</a>
+    <router-outlet></router-outlet>
+  `,
+  directives: [ROUTER_DIRECTIVES],
+  providers: [ROUTER_PROVIDERS]
 })
 
+@RouteConfig([
+  {
+  path: '/Enroll',
+  name: 'Enroll',
+  component: EnrollmentComponent,
+  useAsDefault: true
+}
+])
+
 export class AppComponent {
-  model = new Student(55);
-  submitted = false;
-  onSubmit() { this.submitted = true; }
-
-  // gotoEnroll(student: Student){
-  //   let link = ['Enrollment',{ id: student.id}];
-  //   this.router.navigate(link);
-  // }
-
-  // TODO: Remove this when we're done
-  //get diagnostic() { return JSON.stringify(this.model); }
+  title = 'Tour of Heroes';
 }

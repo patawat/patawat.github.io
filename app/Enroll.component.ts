@@ -1,54 +1,41 @@
-import {Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouteParams } from '@angular/router-deprecated';
-import { Student }    from './student';
+import { HTTP_PROVIDERS }    from '@angular/http';
+import { Router } from '@angular/router-deprecated';
+import { SubjectList } from './subjectList';
+import { SubjectService } from './subject.service';
+import { SearchPipe } from './search.pipe';
 
-import {Http, Headers} from '@angular/http';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/core';
-
-export class Subject{
-  name: String[];
-  id: Number;
-}
 @Component({
-  selector: 'Enroll',
-  templateUrl: './view/Enrollment.html',
-  styleUrls: ['./styles/Enrollment.css'],
-  // directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES ],
-})
 
-export class EnrollComponent{
-  constructor(public http: Http) {
-    Subject = SUBJECT;
-    http.get('https://whsatku.github.io/skecourses/list.json')
-      // Call map on the response observable to get the parsed people object
-      .map(res => res.json())
-      // Subscribe to the observable to get the parsed people object and attach it to the
-      // component
-      .subscribe(
-        Subject => this.Subject = Subject,
+  pipes:[SearchPipe],
+  template: `
+  <input [(ngModel)] = "searchInput" placeholder="name" />
+  <ul>
+    <li *ngFor="let subjectx of subjects | search : searchInput">
+      {{subjectx.id}}{{subjectx.name.en}}
+    </li>
+  </ul>
+    `,
+    providers: [HTTP_PROVIDERS, SubjectService, SubjectList]
+  })
+
+export class EnrollmentComponent implements OnInit{
+  constructor(
+    private subjectService: SubjectService,
+    private subjectList: SubjectList) {}
+
+  subjects : SubjectList[] = [];
+  subject : SubjectList = {id: null ,name: null}
+  searchInput : String = '';
+  errorMessage: String;
+  ngOnInit() {
+     this.getSubject();
   }
-  // subject = Subject;
-  search(InputId : number) {
-    for (var i = 0; i < this.Subject.length; i++) {
-      if (this.Subject[i].id == InputId) {
-        // this.Selected = this.Subject[i].id;
-        // var httpName = 'https://whsatku.github.io/skecourses/'+this.Selected+'json';
-        // http.get(httpName)
-        //   // Call map on the response observable to get the parsed people object
-        //   .map(res => res.json())
-        //   // Subscribe to the observable to get the parsed people object and attach it to the
-        //   // component
-        //   .subscribe(
-        //     Detail => this.Detail = Detail,
-        console.log("True");
-        break;
-      }
-    }
+  getSubject(){
+    this.subjectService.getSubject()
+                  .subscribe(
+                    subjects => this.subjects = subjects,
+                    error =>  this.errorMessage = <any>error);
   }
-
-logError(err) {
-  console.error('There was an error: ' + err);
 }
-}
-
-var SUBJECT: Subject[];

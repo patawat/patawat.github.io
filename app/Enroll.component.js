@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/http'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/http', './subjectList', './subject.service', './search.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['@angular/core', '@angular/http'], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
-    var Subject, EnrollComponent, SUBJECT;
+    var core_1, http_1, subjectList_1, subject_service_1, search_pipe_1;
+    var EnrollmentComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -19,56 +19,45 @@ System.register(['@angular/core', '@angular/http'], function(exports_1, context_
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (subjectList_1_1) {
+                subjectList_1 = subjectList_1_1;
+            },
+            function (subject_service_1_1) {
+                subject_service_1 = subject_service_1_1;
+            },
+            function (search_pipe_1_1) {
+                search_pipe_1 = search_pipe_1_1;
             }],
         execute: function() {
-            Subject = (function () {
-                function Subject() {
+            EnrollmentComponent = (function () {
+                function EnrollmentComponent(subjectService, subjectList) {
+                    this.subjectService = subjectService;
+                    this.subjectList = subjectList;
+                    this.subjects = [];
+                    this.subject = { id: null, name: null };
+                    this.searchInput = '';
                 }
-                return Subject;
-            }());
-            exports_1("Subject", Subject);
-            EnrollComponent = (function () {
-                function EnrollComponent(http) {
+                EnrollmentComponent.prototype.ngOnInit = function () {
+                    this.getSubject();
+                };
+                EnrollmentComponent.prototype.getSubject = function () {
                     var _this = this;
-                    this.http = http;
-                    exports_1("Subject", Subject = SUBJECT);
-                    http.get('https://whsatku.github.io/skecourses/list.json')
-                        .map(function (res) { return res.json(); })
-                        .subscribe(function (Subject) { return _this.Subject = Subject; });
-                }
-                // subject = Subject;
-                EnrollComponent.prototype.search = function (InputId) {
-                    for (var i = 0; i < this.Subject.length; i++) {
-                        if (this.Subject[i].id == InputId) {
-                            // this.Selected = this.Subject[i].id;
-                            // var httpName = 'https://whsatku.github.io/skecourses/'+this.Selected+'json';
-                            // http.get(httpName)
-                            //   // Call map on the response observable to get the parsed people object
-                            //   .map(res => res.json())
-                            //   // Subscribe to the observable to get the parsed people object and attach it to the
-                            //   // component
-                            //   .subscribe(
-                            //     Detail => this.Detail = Detail,
-                            console.log("True");
-                            break;
-                        }
-                    }
+                    this.subjectService.getSubject()
+                        .subscribe(function (subjects) { return _this.subjects = subjects; }, function (error) { return _this.errorMessage = error; });
                 };
-                EnrollComponent.prototype.logError = function (err) {
-                    console.error('There was an error: ' + err);
-                };
-                EnrollComponent = __decorate([
+                EnrollmentComponent = __decorate([
                     core_1.Component({
-                        selector: 'Enroll',
-                        templateUrl: './view/Enrollment.html',
-                        styleUrls: ['./styles/Enrollment.css'],
+                        pipes: [search_pipe_1.SearchPipe],
+                        template: "\n  <input [(ngModel)] = \"searchInput\" placeholder=\"name\" />\n  <ul>\n    <li *ngFor=\"let subjectx of subjects | search : searchInput\">\n      {{subjectx.id}}{{subjectx.name.en}}\n    </li>\n  </ul>\n    ",
+                        providers: [http_1.HTTP_PROVIDERS, subject_service_1.SubjectService, subjectList_1.SubjectList]
                     }), 
-                    __metadata('design:paramtypes', [http_1.Http])
-                ], EnrollComponent);
-                return EnrollComponent;
+                    __metadata('design:paramtypes', [subject_service_1.SubjectService, subjectList_1.SubjectList])
+                ], EnrollmentComponent);
+                return EnrollmentComponent;
             }());
-            exports_1("EnrollComponent", EnrollComponent);
+            exports_1("EnrollmentComponent", EnrollmentComponent);
         }
     }
 });
-//# sourceMappingURL=Enroll.component.js.map
+//# sourceMappingURL=enroll.component.js.map
