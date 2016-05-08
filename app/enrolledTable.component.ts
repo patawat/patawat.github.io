@@ -10,7 +10,7 @@ import {EnrollService} from './enroll.service'
 
 @Component({
   templateUrl: `app/view/enrolledTable.component.html`,
-  styleUrls: ['app/styles/enrolledTable.component.css']
+  styleUrls: ['app/styles/enrolledTable.component.css'],
   directives: [ROUTER_DIRECTIVES],
   providers: [ROUTER_PROVIDERS, EnrollService, HTTP_PROVIDERS]
 })
@@ -25,5 +25,8 @@ export class EnrolledTable{
   getEnrolled(){
     this.enrollService.getEnrolled()
                   .then(enrollList => this.enrollList = enrollList);
+  }
+  goBack() {
+    window.history.back();
   }
 }

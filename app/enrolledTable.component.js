@@ -39,6 +39,9 @@ System.register(['@angular/core', '@angular/router-deprecated', '@angular/http',
                     this.enrollService.getEnrolled()
                         .then(function (enrollList) { return _this.enrollList = enrollList; });
                 };
+                EnrolledTable.prototype.goBack = function () {
+                    window.history.back();
+                };
                 EnrolledTable = __decorate([
                     core_1.Component({
                         templateUrl: "app/view/enrolledTable.component.html",
