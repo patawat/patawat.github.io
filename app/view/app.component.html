@@ -1,0 +1,18 @@
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-left">
+        <ul class="nav nav-pills">
+          <li role="presentation" [routerLink]="['Enroll']"><a [routerLink]="['Enroll']">Profile</a></li>
+          <li role="presentation"><a [routerLink]="['EnrolledTable']">EnrolledTable</a></li>
+        </ul>
+      </div>
+      <div class=" navbar-right">
+        <a class="navbar-brand"  href="#">
+          Kasetsart University Registration
+        </a>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</body>

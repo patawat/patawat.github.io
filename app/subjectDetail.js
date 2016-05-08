@@ -8,7 +8,7 @@ System.register([], function(exports_1, context_1) {
             SubjectDetail = (function () {
                 function SubjectDetail() {
                     this.name = { th: String, en: String };
-                    this.credit = { seft: Number, lab: Number, total: Number, lecture: Number };
+                    this.credit = { seft: String, lab: String, total: String, lecture: String };
                     this.description = { th: String, en: String };
                 }
                 return SubjectDetail;

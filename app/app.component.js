@@ -37,7 +37,8 @@ System.register(['@angular/core', '@angular/router-deprecated', './enroll.compon
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <h1>{{title}}</h1>\n    <a [routerLink]=\"['Enroll']\">Enroll</a>\n    <a [routerLink]=\"['EnrolledTable']\">EnrolledTable</a>\n    <router-outlet></router-outlet>\n  ",
+                        templateUrl: '/app/view/app.component.html',
+                        styleUrls: ['/app/styles/app.component.css'],
                         directives: [router_deprecated_1.ROUTER_DIRECTIVES],
                         providers: [router_deprecated_1.ROUTER_PROVIDERS]
                     }),

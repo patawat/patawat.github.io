@@ -58,7 +58,8 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
                 EnrollmentComponent = __decorate([
                     core_1.Component({
                         pipes: [search_pipe_1.SearchPipe],
-                        template: "\n  <input [(ngModel)] = \"searchInput\" placeholder=\"name\" />\n  <ul>\n    <li *ngFor=\"let subjectx of subjects | search : searchInput\" (click)=\"gotoDetail(subjectx)\">\n      {{subjectx.id}}{{subjectx.name.en}}\n    </li>\n  </ul>\n    ",
+                        templateUrl: "app/view/enroll.component.html",
+                        styleUrls: ["app/styles/enroll.component.css"],
                         providers: [http_1.HTTP_PROVIDERS, subject_service_1.SubjectService, subjectList_1.SubjectList]
                     }), 
                     __metadata('design:paramtypes', [subject_service_1.SubjectService, subjectList_1.SubjectList, router_deprecated_1.Router])

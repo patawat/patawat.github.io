@@ -6,12 +6,8 @@ import { EnrolledTable } from './enrolledTable.component';
 
 @Component({
   selector: 'my-app',
-  template: `
-    <h1>{{title}}</h1>
-    <a [routerLink]="['Enroll']">Enroll</a>
-    <a [routerLink]="['EnrolledTable']">EnrolledTable</a>
-    <router-outlet></router-outlet>
-  `,
+  templateUrl: '/app/view/app.component.html',
+  styleUrls: ['/app/styles/app.component.css'],
   directives: [ROUTER_DIRECTIVES],
   providers: [ROUTER_PROVIDERS]
 })
