@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { EnrollmentComponent } from './enroll.component';
+import { EnrollDetail } from './Enroll-detail.component';
+import { EnrolledTable } from './enrolledTable.component';
 
 @Component({
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
-
     <a [routerLink]="['Enroll']">Enroll</a>
+    <a [routerLink]="['EnrolledTable']">EnrolledTable</a>
     <router-outlet></router-outlet>
   `,
   directives: [ROUTER_DIRECTIVES],
@@ -21,8 +23,19 @@ import { EnrollmentComponent } from './enroll.component';
   component: EnrollmentComponent,
   useAsDefault: true
 }
+,
+{
+  path: 'detail/:id',
+  name: 'SubjectDetail',
+  component:EnrollDetail
+},
+{
+  path: 'enrolled',
+  name: 'EnrolledTable',
+  component: EnrolledTable
+}
 ])
 
 export class AppComponent {
-  title = 'Tour of Heroes';
+  title = 'Registration System';
 }

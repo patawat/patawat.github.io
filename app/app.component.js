@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router-deprecated', './enroll.component'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router-deprecated', './enroll.component', './Enroll-detail.component', './enrolledTable.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/router-deprecated', './enroll.compon
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_deprecated_1, enroll_component_1;
+    var core_1, router_deprecated_1, enroll_component_1, Enroll_detail_component_1, enrolledTable_component_1;
     var AppComponent;
     return {
         setters:[
@@ -22,16 +22,22 @@ System.register(['@angular/core', '@angular/router-deprecated', './enroll.compon
             },
             function (enroll_component_1_1) {
                 enroll_component_1 = enroll_component_1_1;
+            },
+            function (Enroll_detail_component_1_1) {
+                Enroll_detail_component_1 = Enroll_detail_component_1_1;
+            },
+            function (enrolledTable_component_1_1) {
+                enrolledTable_component_1 = enrolledTable_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.title = 'Tour of Heroes';
+                    this.title = 'Registration System';
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <h1>{{title}}</h1>\n\n    <a [routerLink]=\"['Enroll']\">Enroll</a>\n    <router-outlet></router-outlet>\n  ",
+                        template: "\n    <h1>{{title}}</h1>\n    <a [routerLink]=\"['Enroll']\">Enroll</a>\n    <a [routerLink]=\"['EnrolledTable']\">EnrolledTable</a>\n    <router-outlet></router-outlet>\n  ",
                         directives: [router_deprecated_1.ROUTER_DIRECTIVES],
                         providers: [router_deprecated_1.ROUTER_PROVIDERS]
                     }),
@@ -41,6 +47,16 @@ System.register(['@angular/core', '@angular/router-deprecated', './enroll.compon
                             name: 'Enroll',
                             component: enroll_component_1.EnrollmentComponent,
                             useAsDefault: true
+                        },
+                        {
+                            path: 'detail/:id',
+                            name: 'SubjectDetail',
+                            component: Enroll_detail_component_1.EnrollDetail
+                        },
+                        {
+                            path: 'enrolled',
+                            name: 'EnrolledTable',
+                            component: enrolledTable_component_1.EnrolledTable
                         }
                     ]), 
                     __metadata('design:paramtypes', [])

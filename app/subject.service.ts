@@ -2,7 +2,8 @@ import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http'
 
-import {SubjectList} from './subjectList'
+import {SubjectList} from './subjectList';
+import {SubjectDetail} from './SubjectDetail';
 import { Observable }     from 'rxjs/Observable';
 
 
@@ -14,7 +15,13 @@ export class SubjectService {
     return this.http.get(this.heroesUrl)
           .map((responseData) => {
           return responseData.json();
-});
+          });
+  }
+  getDetail(id: String) : Observable<SubjectDetail>{
+    return this.http.get('https://whsatku.github.io/skecourses/0'+id+'.json')
+          .map((responseData) => {
+          return responseData.json();
+          });
   }
   private extractData(res: Response) {
     if (res.status < 200 || res.status >= 300) {

@@ -8,7 +8,7 @@ export class SearchPipe{
   constructor(
     private subjectList: SubjectList) {
   }
-  transform(value: subjectList[],x: String){
+  transform(value: SubjectList[],x: string){
     //return value;
     return value.filter(subject => subject.id.startsWith(x));
   }
