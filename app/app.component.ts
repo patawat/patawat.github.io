@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
-import { EnrollmentComponent } from './Enroll.component';
+import { EnrollmentComponent } from './enroll.component';
 import { EnrollDetail } from './Enroll-detail.component';
 import { EnrolledTable } from './enrolledTable.component';
 

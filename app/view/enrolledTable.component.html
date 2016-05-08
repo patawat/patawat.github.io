@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class = "enrolled-table">
+    <h1>Enrolled Table</h1>
+    <h2>ตารางลงทะเบียน</h2>
+    <table class="table table-hover table-striped">
+
+      <tr *ngFor="let sub of enrollList">
+        <td>{{sub.id}}</td>
+        <td>{{sub.name.en}}</td>
+      </tr>
+    </table>
+  </div>
+  </div>
+  <a class="btn btn-default" href="#" role="button" (click)="goBack()">Back</a>
+</div>

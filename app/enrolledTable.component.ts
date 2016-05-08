@@ -9,9 +9,8 @@ import {EnrollService} from './enroll.service'
 
 
 @Component({
-  template: `
-    <div *ngFor="let sub of enrollList">{{sub.name.th}}</div>
-  `,
+  templateUrl: `app/view/enrolledTable.component.html`,
+  styleUrls: ['app/styles/enrolledTable.component.css']
   directives: [ROUTER_DIRECTIVES],
   providers: [ROUTER_PROVIDERS, EnrollService, HTTP_PROVIDERS]
 })

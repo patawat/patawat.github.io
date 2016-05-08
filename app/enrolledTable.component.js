@@ -41,7 +41,8 @@ System.register(['@angular/core', '@angular/router-deprecated', '@angular/http',
                 };
                 EnrolledTable = __decorate([
                     core_1.Component({
-                        template: "\n    <div *ngFor=\"let sub of enrollList\">{{sub.name.th}}</div>\n  ",
+                        templateUrl: "app/view/enrolledTable.component.html",
+                        styleUrls: ['app/styles/enrolledTable.component.css'],
                         directives: [router_deprecated_1.ROUTER_DIRECTIVES],
                         providers: [router_deprecated_1.ROUTER_PROVIDERS, enroll_service_1.EnrollService, http_1.HTTP_PROVIDERS]
                     }), 

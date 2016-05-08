@@ -8,7 +8,8 @@ import {EnrollService} from './enroll.service'
 
 @Component({
   selector: 'detail',
-  template: '<div>{{detail.name.en}}</div><a (click)="addEnrolled(detail)">Enrolled</a><a (click)="goBack()">Back</a>',
+  templateUrl: 'app/view/enroll-detail.component.html',
+  styleUrls: ['app/styles/enroll-detail.component.css'],
   providers: [HTTP_PROVIDERS,SubjectService, SubjectList, EnrollService]
 })
 export class EnrollDetail{

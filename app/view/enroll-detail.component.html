@@ -1,0 +1,26 @@
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class = "info">
+    <h1>{{detail.id}}</h1>
+    <h2>{{detail.name.en}}</h2>
+    <h4>{{detail.name.th}}</h4>
+    <h3>Information</h3>
+    <p>{{detail.description.en}}</p>
+    <p>{{detail.description.th}}</p>
+
+    <h3> Section </h3>
+    <table class="table table-hover table-striped">
+      <thead><td>Section</td><td>Type</td><td>Instructors</td><td>Credit</td><td>Enrolled</td></thead>
+      <tr>
+        <td>450</td><td>Lecture</td>
+        <td>Paruj Ratanaworabhan</td>
+        <td>{{detail.credit.total}}</td>
+        <td> 5/30 </td>
+        <td><input class="btn btn-default" type="submit" value="Enrolled" (click)="addEnrolled(detail)"></td>
+      </tr>
+    </table>
+  </div>
+  </div>
+  <a class="btn btn-default" href="#" role="button" (click)="goBack()">Back</a>
+</div>

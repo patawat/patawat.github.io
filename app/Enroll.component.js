@@ -70,4 +70,4 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
         }
     }
 });
-//# sourceMappingURL=Enroll.component.js.map
+//# sourceMappingURL=enroll.component.js.map

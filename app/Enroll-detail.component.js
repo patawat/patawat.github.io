@@ -66,7 +66,8 @@ System.register(['@angular/core', '@angular/router-deprecated', '@angular/http',
                 EnrollDetail = __decorate([
                     core_1.Component({
                         selector: 'detail',
-                        template: '<div>{{detail.name.en}}</div><a (click)="addEnrolled(detail)">Enrolled</a><a (click)="goBack()">Back</a>',
+                        templateUrl: 'app/view/enroll-detail.component.html',
+                        styleUrls: ['app/styles/enroll-detail.component.css'],
                         providers: [http_1.HTTP_PROVIDERS, subject_service_1.SubjectService, subjectList_1.SubjectList, enroll_service_1.EnrollService]
                     }), 
                     __metadata('design:paramtypes', [enroll_service_1.EnrollService, subject_service_1.SubjectService, router_deprecated_1.RouteParams])
