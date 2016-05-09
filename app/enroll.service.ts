@@ -13,7 +13,7 @@ export class EnrollService {
   }
   private heroesUrl = 'http://52.37.98.127:3000/v1/5610545714?pin=5714';  // URL to web api
   private enrolled : SubjectDetail[];
-  getEnrolled() : Observable<SubjectDetail[]>{
+  getEnrolled(){
     // return this.http.get(this.heroesUrl)
     // .map(this.extractData)
     //                 .catch(this.handleError);
