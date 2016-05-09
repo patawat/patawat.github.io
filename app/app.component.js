@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router-deprecated', './enroll.component', './Enroll-detail.component', './enrolledTable.component'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router-deprecated', './Enroll.component', './Enroll-detail.component', './enrolledTable.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/router-deprecated', './enroll.compon
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_deprecated_1, enroll_component_1, Enroll_detail_component_1, enrolledTable_component_1;
+    var core_1, router_deprecated_1, Enroll_component_1, Enroll_detail_component_1, enrolledTable_component_1;
     var AppComponent;
     return {
         setters:[
@@ -20,8 +20,8 @@ System.register(['@angular/core', '@angular/router-deprecated', './enroll.compon
             function (router_deprecated_1_1) {
                 router_deprecated_1 = router_deprecated_1_1;
             },
-            function (enroll_component_1_1) {
-                enroll_component_1 = enroll_component_1_1;
+            function (Enroll_component_1_1) {
+                Enroll_component_1 = Enroll_component_1_1;
             },
             function (Enroll_detail_component_1_1) {
                 Enroll_detail_component_1 = Enroll_detail_component_1_1;
@@ -46,7 +46,7 @@ System.register(['@angular/core', '@angular/router-deprecated', './enroll.compon
                         {
                             path: '/Enroll',
                             name: 'Enroll',
-                            component: enroll_component_1.EnrollmentComponent,
+                            component: Enroll_component_1.EnrollmentComponent,
                             useAsDefault: true
                         },
                         {
