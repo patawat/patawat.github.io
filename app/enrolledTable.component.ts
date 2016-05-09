@@ -17,14 +17,25 @@ import {EnrollService} from './enroll.service'
 export class EnrolledTable{
   enrollList : SubjectDetail[];
   sub : SubjectDetail;
+  result : string ;
+  myJsonString: string;
   constructor(private enrollService: EnrollService){
+     //this.enrollList = [new SubjectList()];
+    // this.sub = new SubjectList();
+    this.result = '';
   }
   ngOnInit(){
     this.getEnrolled();
+     let myJsonString = JSON.stringify(this.enrollList);
+     //this.result = JSON.stringify(myJsonString);
+     console.log(myJsonString);
   }
   getEnrolled(){
     this.enrollService.getEnrolled()
                   .then(enrollList => this.enrollList = enrollList);
+    // this.enrollService.getEnrolled()
+    //                 .subscribe(
+    //                   enrollList => this.enrollList = enrollList);
   }
   goBack() {
     window.history.back();

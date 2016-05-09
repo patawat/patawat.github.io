@@ -49,19 +49,13 @@ System.register(['@angular/core', '@angular/router-deprecated', '@angular/http',
                     var id = +this.routeParams.get('id');
                     this.subjectService.getDetail(id.toString())
                         .subscribe(function (detail) { return _this.detail = detail; });
-                    this.getEnrolled();
+                    //this.getEnrolled();
                 };
                 EnrollDetail.prototype.goBack = function () {
                     window.history.back();
                 };
                 EnrollDetail.prototype.addEnrolled = function (detail) {
                     this.enrollService.addEnrolled(detail);
-                };
-                EnrollDetail.prototype.getEnrolled = function () {
-                    var _this = this;
-                    this.enrollService.getEnrolled()
-                        .then(function (enrollList) { return _this.enrollList = enrollList; });
-                    //this.enrollList = this.enrollService.getEnrolled()
                 };
                 EnrollDetail = __decorate([
                     core_1.Component({

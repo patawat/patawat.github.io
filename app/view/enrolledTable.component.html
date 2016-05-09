@@ -8,9 +8,10 @@
       <tr *ngFor="let sub of enrollList">
         <td>{{sub.id}}</td>
         <td>{{sub.name.en}}</td>
-        <td>{{sub.credit.total}}</td>
+        <td>{{sub.credit.total}}{{result}}</td>
       </tr>
     </table>
+
   </div>
   </div>
   <a class="btn btn-default" href="#" role="button" (click)="goBack()">Back</a>

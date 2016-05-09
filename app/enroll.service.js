@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/http', './mock-enroll'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/http', './mock-enroll', 'rxjs/Observable'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/http', './mock-enroll'], function(ex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, mock_enroll_1;
+    var core_1, http_1, mock_enroll_1, Observable_1;
     var EnrollService;
     return {
         setters:[
@@ -22,22 +22,26 @@ System.register(['@angular/core', '@angular/http', './mock-enroll'], function(ex
             },
             function (mock_enroll_1_1) {
                 mock_enroll_1 = mock_enroll_1_1;
+            },
+            function (Observable_1_1) {
+                Observable_1 = Observable_1_1;
             }],
         execute: function() {
             EnrollService = (function () {
                 function EnrollService(http) {
                     this.http = http;
-                    this.heroesUrl = 'https://whsatku.github.io/skecourses/list.json'; // URL to web api
+                    this.heroesUrl = 'http://52.37.98.127:3000/v1/5610545714?pin=5714'; // URL to web api
                     this.enrolled = [];
                 }
                 EnrollService.prototype.getEnrolled = function () {
+                    // return this.http.get(this.heroesUrl)
+                    // .map(this.extractData)
+                    //                 .catch(this.handleError);
                     return Promise.resolve(mock_enroll_1.SUBJECT);
-                    //return this.enrolled;
                 };
                 EnrollService.prototype.addEnrolled = function (subject) {
                     var check = true;
                     if (mock_enroll_1.SUBJECT != null) {
-                        //var x =Promise.resolve(SUBJECT);
                         for (var _i = 0, SUBJECT_1 = mock_enroll_1.SUBJECT; _i < SUBJECT_1.length; _i++) {
                             var test = SUBJECT_1[_i];
                             if (test.id === subject.id) {
@@ -45,12 +49,25 @@ System.register(['@angular/core', '@angular/http', './mock-enroll'], function(ex
                             }
                         }
                     }
-                    // if (!(SUBJECT.indexOf(subject) != -1)) {
                     if (check) {
                         mock_enroll_1.SUBJECT.push(subject);
                     }
-                    //}
-                    //console.log(subject.name.th);
+                    else {
+                        alert('This subject was enrolled');
+                    }
+                };
+                EnrollService.prototype.extractData = function (res) {
+                    if (res.status < 200 || res.status >= 300) {
+                        throw new Error('Bad response status: ' + res.status);
+                    }
+                    var body = res.json();
+                    return body.data || {};
+                };
+                EnrollService.prototype.handleError = function (error) {
+                    // In a real world app, we might send the error to remote logging infrastructure
+                    var errMsg = error.message || 'Server error';
+                    console.error(errMsg); // log to console instead
+                    return Observable_1.Observable.throw(errMsg);
                 };
                 EnrollService = __decorate([
                     core_1.Injectable(), 

@@ -25,7 +25,7 @@ export class EnrollDetail{
     let id = +this.routeParams.get('id');
     this.subjectService.getDetail(id.toString())
       .subscribe(detail => this.detail = detail);
-    this.getEnrolled();
+    //this.getEnrolled();
   }
   goBack() {
     window.history.back();
@@ -33,10 +33,10 @@ export class EnrollDetail{
   addEnrolled(detail: SubjectDetail){
     this.enrollService.addEnrolled(detail);
   }
-  getEnrolled(){
-    this.enrollService.getEnrolled()
-                  .then(enrollList => this.enrollList = enrollList);
-    //this.enrollList = this.enrollService.getEnrolled()
-  }
+  // getEnrolled(){
+  //   this.enrollService.getEnrolled()
+  //                 .then(enrollList => this.enrollList = enrollList);
+  //   //this.enrollList = this.enrollService.getEnrolled()
+  // }
 }
 var Detail = new SubjectDetail();

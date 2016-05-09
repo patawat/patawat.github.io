@@ -30,14 +30,23 @@ System.register(['@angular/core', '@angular/router-deprecated', '@angular/http',
             EnrolledTable = (function () {
                 function EnrolledTable(enrollService) {
                     this.enrollService = enrollService;
+                    //this.enrollList = [new SubjectList()];
+                    // this.sub = new SubjectList();
+                    this.result = '';
                 }
                 EnrolledTable.prototype.ngOnInit = function () {
                     this.getEnrolled();
+                    var myJsonString = JSON.stringify(this.enrollList);
+                    //this.result = JSON.stringify(myJsonString);
+                    console.log(myJsonString);
                 };
                 EnrolledTable.prototype.getEnrolled = function () {
                     var _this = this;
                     this.enrollService.getEnrolled()
                         .then(function (enrollList) { return _this.enrollList = enrollList; });
+                    // this.enrollService.getEnrolled()
+                    //                 .subscribe(
+                    //                   enrollList => this.enrollList = enrollList);
                 };
                 EnrolledTable.prototype.goBack = function () {
                     window.history.back();
