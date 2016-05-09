@@ -35,8 +35,22 @@ System.register(['@angular/core', '@angular/http', './mock-enroll'], function(ex
                     //return this.enrolled;
                 };
                 EnrollService.prototype.addEnrolled = function (subject) {
+                    var check = true;
+                    if (mock_enroll_1.SUBJECT != null) {
+                        //var x =Promise.resolve(SUBJECT);
+                        for (var _i = 0, SUBJECT_1 = mock_enroll_1.SUBJECT; _i < SUBJECT_1.length; _i++) {
+                            var test = SUBJECT_1[_i];
+                            if (test.id === subject.id) {
+                                check = false;
+                            }
+                        }
+                    }
+                    // if (!(SUBJECT.indexOf(subject) != -1)) {
+                    if (check) {
+                        mock_enroll_1.SUBJECT.push(subject);
+                    }
+                    //}
                     //console.log(subject.name.th);
-                    mock_enroll_1.SUBJECT.push(subject);
                 };
                 EnrollService = __decorate([
                     core_1.Injectable(), 

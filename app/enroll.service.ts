@@ -17,8 +17,25 @@ export class EnrollService {
     //return this.enrolled;
   }
   addEnrolled(subject : SubjectDetail){
+
+    var check = true;
+    if (SUBJECT != null) {
+      //var x =Promise.resolve(SUBJECT);
+      for(var test of SUBJECT){
+        if (test.id === subject.id) {
+          check = false;
+        }
+      }
+    }
+
+    // if (!(SUBJECT.indexOf(subject) != -1)) {
+    if (check) {
+      SUBJECT.push(subject);
+    }
+
+    //}
     //console.log(subject.name.th);
-    SUBJECT.push(subject);
+
 
   }
   // private extractData(res: Response) {
