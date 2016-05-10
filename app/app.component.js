@@ -32,6 +32,7 @@ System.register(['@angular/core', '@angular/router-deprecated', './Enroll.compon
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.KUImageUrl = 'http://www.ku.ac.th/web2012/resources/template2/ui/images/logo.png';
                     this.title = 'Registration System';
                 }
                 AppComponent = __decorate([

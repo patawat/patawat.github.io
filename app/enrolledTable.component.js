@@ -31,6 +31,7 @@ System.register(['@angular/core', '@angular/router-deprecated', '@angular/http',
                 function EnrolledTable(enrollService) {
                     this.enrollService = enrollService;
                     this.enrollList = [];
+                    this.KUImageUrl = 'http://www.ku.ac.th/web2012/resources/template2/ui/images/logo.png';
                     //this.enrollList = [new SubjectList()];
                     // this.sub = new SubjectList();
                     //this.result = '';

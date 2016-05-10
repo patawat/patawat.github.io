@@ -19,6 +19,7 @@ export class EnrollmentComponent implements OnInit{
   subject : SubjectList = {id: null ,name: null}
   searchInput : String = '';
   errorMessage: String;
+  KUImageUrl = 'http://www.ku.ac.th/web2012/resources/template2/ui/images/logo.png';
 
   constructor(
     private subjectService: SubjectService,

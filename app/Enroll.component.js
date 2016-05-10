@@ -41,6 +41,7 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
                     this.subjects = [];
                     this.subject = { id: null, name: null };
                     this.searchInput = '';
+                    this.KUImageUrl = 'http://www.ku.ac.th/web2012/resources/template2/ui/images/logo.png';
                 }
                 EnrollmentComponent.prototype.ngOnInit = function () {
                     this.getSubject();

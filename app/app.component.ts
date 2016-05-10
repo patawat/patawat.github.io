@@ -33,5 +33,6 @@ import { EnrolledTable } from './enrolledTable.component';
 ])
 
 export class AppComponent {
+  KUImageUrl = 'http://www.ku.ac.th/web2012/resources/template2/ui/images/logo.png';
   title = 'Registration System';
 }

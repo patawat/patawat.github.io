@@ -19,6 +19,7 @@ export class EnrolledTable implements OnInit{
   sub : SubjectDetail;
   //result : string ;
   myJsonString: string;
+  KUImageUrl = 'http://www.ku.ac.th/web2012/resources/template2/ui/images/logo.png';
   constructor(private enrollService: EnrollService){
      //this.enrollList = [new SubjectList()];
     // this.sub = new SubjectList();
