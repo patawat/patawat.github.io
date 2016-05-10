@@ -1,7 +1,9 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-10 col-md-offset-1">
     <div class = "Enrollment">
+      <h1>Kasetsart University Registration</h1>
       <form>
+
         <h4>Search Subject</h4>
           <div class="form-group">
             <input [(ngModel)] = "searchInput" placeholder="SubjectID" class="form-control"/>
@@ -10,7 +12,7 @@
       <div class = "Subject-Table">
 
           <table class="table table-hover table-striped">
-            <tr *ngFor="let subjectx of subjects | search : searchInput" (click)="gotoDetail(subjectx)">
+            <tr *ngFor="let subjectx of subjects | search : searchInput " (click)="gotoDetail(subjectx)">
               <td>{{subjectx.id}}</td><td>{{subjectx.name.en}} </td> <td>{{subjectx.name.th}}</td>
             </tr>
           </table>

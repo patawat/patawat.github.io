@@ -27,7 +27,7 @@ System.register(['@angular/core', './subjectList'], function(exports_1, context_
                 }
                 SearchPipe.prototype.transform = function (value, x) {
                     //return value;
-                    return value.filter(function (subject) { return subject.id.startsWith(x); });
+                    return value.filter(function (subject) { return subject.id.startsWith(x); }).slice(0, 5);
                 };
                 SearchPipe = __decorate([
                     core_1.Pipe({

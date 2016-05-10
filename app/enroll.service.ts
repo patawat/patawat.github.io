@@ -14,6 +14,10 @@ export class EnrollService {
   private heroesUrl = 'http://52.37.98.127:3000/v1/5610545714?pin=5714';  // URL to web api
   private subjectUrl = 'app/mock-enroll.json';
   private enrolled : SubjectDetail[];
+  drop(subject : SubjectDetail){
+    var x = SUBJECT.indexOf(subject);
+    SUBJECT.splice(x,1);
+  }
   getEnrolled()
   //: Observable<SubjectDetail[]>
   {

@@ -11,17 +11,23 @@
 
     <h3> Section </h3>
     <table class="table table-hover table-striped">
-      <thead><td>Section</td><td>Type</td><td>Instructors</td><td>Credit</td><td>Enrolled</td></thead>
+      <thead><td>Section</td><td>Type</td><td>Instructors</td><td>Credit</td><td>Credit/Audit</td><td>Enrolled</td></thead>
       <tr>
         <td>450</td><td>Lecture</td>
         <td>Paruj Ratanaworabhan</td>
         <td>{{detail.credit.total}}</td>
+        <td>
+          <select class="form-control">
+            <option>Credit</option>
+            <option>Audit</option>
+          </select>
+        </td>
         <td> 5/30 </td>
         <td>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Enroll</button>
           <!-- <input class="btn btn-default" type="submit" value="Enrolled" (click)="addEnrolled(detail)"> -->
         </td>
-        
+
       </tr>
     </table>
   </div>

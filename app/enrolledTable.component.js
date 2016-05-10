@@ -40,6 +40,9 @@ System.register(['@angular/core', '@angular/router-deprecated', '@angular/http',
                     //let myJsonString = JSON.stringify(this.enrollList);
                     //this.result = JSON.stringify(myJsonString);
                 };
+                EnrolledTable.prototype.drop = function (sub) {
+                    this.enrollService.drop(sub);
+                };
                 EnrolledTable.prototype.getEnrolled = function () {
                     var _this = this;
                     // this.enrollService.getEnrolled()

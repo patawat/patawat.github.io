@@ -10,7 +10,7 @@ export class SearchPipe{
   }
   transform(value: SubjectList[],x: string){
     //return value;
-    return value.filter(subject => subject.id.startsWith(x));
+    return value.filter(subject => subject.id.startsWith(x)).slice(0, 5);
   }
 
 }

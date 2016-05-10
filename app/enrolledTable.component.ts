@@ -30,6 +30,9 @@ export class EnrolledTable implements OnInit{
      //this.result = JSON.stringify(myJsonString);
 
   }
+  drop(sub : SubjectDetail){
+    this.enrollService.drop(sub);
+  }
   getEnrolled(){
     // this.enrollService.getEnrolled()
     //                 .subscribe(

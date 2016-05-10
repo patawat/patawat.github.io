@@ -34,6 +34,10 @@ System.register(['@angular/core', '@angular/http', './mock-enroll', 'rxjs/Observ
                     this.subjectUrl = 'app/mock-enroll.json';
                     this.enrolled = [];
                 }
+                EnrollService.prototype.drop = function (subject) {
+                    var x = mock_enroll_1.SUBJECT.indexOf(subject);
+                    mock_enroll_1.SUBJECT.splice(x, 1);
+                };
                 EnrollService.prototype.getEnrolled = function () {
                     //return this.http.get(this.heroesUrl)
                     // // .map((responseData) => {
