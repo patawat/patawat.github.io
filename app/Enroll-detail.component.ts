@@ -15,28 +15,52 @@ import {EnrollService} from './enroll.service'
 export class EnrollDetail{
   constructor(private enrollService: EnrollService, private subjectService: SubjectService, private routeParams: RouteParams){
     //this.enrollList = [new SubjectDetail();]
+    // let id = +this.routeParams.get('id');
+    // this.subjectService.getDetail(id.toString())
+    //   .subscribe(detail => this.detail = detail);
   }
   id : string;
   detail = Detail;
+  //detail : SubjectDetail;
   enrollList : SubjectDetail[];
   sub : SubjectDetail;
 
   ngOnInit(){
-    let id = +this.routeParams.get('id');
-    this.subjectService.getDetail(id.toString())
-      .subscribe(detail => this.detail = detail);
+    this.getSubject();
+    // let id = +this.routeParams.get('id');
+    // this.subjectService.getDetail(id.toString())
+    //   .subscribe(detail => this.detail = detail);
     //this.getEnrolled();
   }
   goBack() {
     window.history.back();
   }
-  addEnrolled(detail: SubjectDetail){
-    this.enrollService.addEnrolled(detail);
+  getSubject(){
+    let id = +this.routeParams.get('id');
+    this.subjectService.getDetail(id.toString())
+      .subscribe(detail => this.detail = detail);
+      let body = JSON.stringify(this.detail);
+      //console.log( body );
   }
-  // getEnrolled(){
-  //   this.enrollService.getEnrolled()
-  //                 .then(enrollList => this.enrollList = enrollList);
-  //   //this.enrollList = this.enrollService.getEnrolled()
-  // }
+  addEnrolled(detail: SubjectDetail){
+    console.log(detail);
+    this.enrollService.addEnrolled(detail);
+
+    // this.enrollService.addEnrolled(detail).subscribe(
+    //     enrollList => enrollList = enrollList);
+  }
+  getJson(detail: SubjectDetail){
+    //console.log(detail);
+    let body = JSON.stringify({'StudentID' : 5610545714,'subject' : this.detail, 'Section' : 450});
+    return body;
+  }
+  getEnrolled(){
+    this.enrollService.getEnrolled()
+                  .then(enrollList => this.enrollList = enrollList);
+    // //this.enrollList = this.enrollService.getEnrolled()
+    // this.enrollService.getEnrolled()
+    //                 .subscribe(
+    //                   enrollList => enrollList = enrollList);
+  }
 }
-var Detail = new SubjectDetail();
+var Detail = new SubjectDetail(0,{th: '', en: ''},{seft: '', lab: '',total: '',lecture : ''},[],{th: '', en: ''});

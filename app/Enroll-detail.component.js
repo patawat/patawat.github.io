@@ -43,19 +43,47 @@ System.register(['@angular/core', '@angular/router-deprecated', '@angular/http',
                     this.routeParams = routeParams;
                     this.detail = Detail;
                     //this.enrollList = [new SubjectDetail();]
+                    // let id = +this.routeParams.get('id');
+                    // this.subjectService.getDetail(id.toString())
+                    //   .subscribe(detail => this.detail = detail);
                 }
                 EnrollDetail.prototype.ngOnInit = function () {
-                    var _this = this;
-                    var id = +this.routeParams.get('id');
-                    this.subjectService.getDetail(id.toString())
-                        .subscribe(function (detail) { return _this.detail = detail; });
+                    this.getSubject();
+                    // let id = +this.routeParams.get('id');
+                    // this.subjectService.getDetail(id.toString())
+                    //   .subscribe(detail => this.detail = detail);
                     //this.getEnrolled();
                 };
                 EnrollDetail.prototype.goBack = function () {
                     window.history.back();
                 };
+                EnrollDetail.prototype.getSubject = function () {
+                    var _this = this;
+                    var id = +this.routeParams.get('id');
+                    this.subjectService.getDetail(id.toString())
+                        .subscribe(function (detail) { return _this.detail = detail; });
+                    var body = JSON.stringify(this.detail);
+                    //console.log( body );
+                };
                 EnrollDetail.prototype.addEnrolled = function (detail) {
+                    console.log(detail);
                     this.enrollService.addEnrolled(detail);
+                    // this.enrollService.addEnrolled(detail).subscribe(
+                    //     enrollList => enrollList = enrollList);
+                };
+                EnrollDetail.prototype.getJson = function (detail) {
+                    //console.log(detail);
+                    var body = JSON.stringify({ 'StudentID': 5610545714, 'subject': this.detail, 'Section': 450 });
+                    return body;
+                };
+                EnrollDetail.prototype.getEnrolled = function () {
+                    var _this = this;
+                    this.enrollService.getEnrolled()
+                        .then(function (enrollList) { return _this.enrollList = enrollList; });
+                    // //this.enrollList = this.enrollService.getEnrolled()
+                    // this.enrollService.getEnrolled()
+                    //                 .subscribe(
+                    //                   enrollList => enrollList = enrollList);
                 };
                 EnrollDetail = __decorate([
                     core_1.Component({
@@ -69,7 +97,7 @@ System.register(['@angular/core', '@angular/router-deprecated', '@angular/http',
                 return EnrollDetail;
             }());
             exports_1("EnrollDetail", EnrollDetail);
-            Detail = new subjectDetail_1.SubjectDetail();
+            Detail = new subjectDetail_1.SubjectDetail(0, { th: '', en: '' }, { seft: '', lab: '', total: '', lecture: '' }, [], { th: '', en: '' });
         }
     }
 });

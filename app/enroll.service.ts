@@ -12,14 +12,22 @@ export class EnrollService {
     this.enrolled = [];
   }
   private heroesUrl = 'http://52.37.98.127:3000/v1/5610545714?pin=5714';  // URL to web api
+  private subjectUrl = 'app/mock-enroll.json';
   private enrolled : SubjectDetail[];
-  getEnrolled(){
-    // return this.http.get(this.heroesUrl)
-    // .map(this.extractData)
-    //                 .catch(this.handleError);
+  getEnrolled()
+  //: Observable<SubjectDetail[]>
+  {
+    //return this.http.get(this.heroesUrl)
+    // // .map((responseData) => {
+    // // return responseData.json();
+    // // });
+    //       .map(this.extractData)
+    //       .catch(this.handleError);
     return Promise.resolve(SUBJECT);
   }
-  addEnrolled(subject : SubjectDetail){
+  addEnrolled(subject : SubjectDetail)
+  //:Observable<SubjectDetail[]>
+  {
 
     var check = true;
     if (SUBJECT != null) {
@@ -35,6 +43,14 @@ export class EnrollService {
     else{
       alert('This subject was enrolled');
     }
+    //console.log(subject.id);
+     let body = JSON.stringify({subject});
+  //   let headers = new Headers({ 'Content-Type': 'application/json' });
+  //   let options = new RequestOptions({ headers: headers });
+    //console.log(body);
+  //  return this.http.post(this.heroesUrl, body, options)
+  //                  .map(this.extractData)
+  //                  .catch(this.handleError);
   }
   private extractData(res: Response) {
     if (res.status < 200 || res.status >= 300) {

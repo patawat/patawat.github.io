@@ -14,28 +14,32 @@ import {EnrollService} from './enroll.service'
   directives: [ROUTER_DIRECTIVES],
   providers: [ROUTER_PROVIDERS, EnrollService, HTTP_PROVIDERS]
 })
-export class EnrolledTable{
-  enrollList : SubjectDetail[];
+export class EnrolledTable implements OnInit{
+  enrollList : SubjectDetail[] = [];
   sub : SubjectDetail;
-  result : string ;
+  //result : string ;
   myJsonString: string;
   constructor(private enrollService: EnrollService){
      //this.enrollList = [new SubjectList()];
     // this.sub = new SubjectList();
-    this.result = '';
+    //this.result = '';
   }
   ngOnInit(){
     this.getEnrolled();
-     let myJsonString = JSON.stringify(this.enrollList);
+     //let myJsonString = JSON.stringify(this.enrollList);
      //this.result = JSON.stringify(myJsonString);
-     console.log(myJsonString);
+
   }
   getEnrolled(){
-    this.enrollService.getEnrolled()
-                  .then(enrollList => this.enrollList = enrollList);
     // this.enrollService.getEnrolled()
     //                 .subscribe(
-    //                   enrollList => this.enrollList = enrollList);
+    //                   enrollList => enrollList = enrollList);
+    this.enrollService.getEnrolled()
+                  .then(enrollList => this.enrollList = enrollList);
+
+
+    console.log(JSON.stringify(this.enrollList));
+
   }
   goBack() {
     window.history.back();

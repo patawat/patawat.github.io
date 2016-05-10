@@ -21,10 +21,13 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Enroll</button>
           <!-- <input class="btn btn-default" type="submit" value="Enrolled" (click)="addEnrolled(detail)"> -->
         </td>
+        
       </tr>
     </table>
   </div>
-  <!-- Small modal -->
+
+
+  <!-- Large modal -->
 
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-lg">
@@ -49,6 +52,9 @@
             </td>
           </tr>
         </table>
+        <h4>JSON Code</h4>
+        <textarea class="form-control" rows="3">{{getJson(detail)}}</textarea>
+
       </div>
       <div class="modal-footer">
         <input class="btn btn-default" data-dismiss="modal" type="submit" value="Comfirm" (click)="addEnrolled(detail)">

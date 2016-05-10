@@ -31,12 +31,16 @@ System.register(['@angular/core', '@angular/http', './mock-enroll', 'rxjs/Observ
                 function EnrollService(http) {
                     this.http = http;
                     this.heroesUrl = 'http://52.37.98.127:3000/v1/5610545714?pin=5714'; // URL to web api
+                    this.subjectUrl = 'app/mock-enroll.json';
                     this.enrolled = [];
                 }
                 EnrollService.prototype.getEnrolled = function () {
-                    // return this.http.get(this.heroesUrl)
-                    // .map(this.extractData)
-                    //                 .catch(this.handleError);
+                    //return this.http.get(this.heroesUrl)
+                    // // .map((responseData) => {
+                    // // return responseData.json();
+                    // // });
+                    //       .map(this.extractData)
+                    //       .catch(this.handleError);
                     return Promise.resolve(mock_enroll_1.SUBJECT);
                 };
                 EnrollService.prototype.addEnrolled = function (subject) {
@@ -55,6 +59,14 @@ System.register(['@angular/core', '@angular/http', './mock-enroll', 'rxjs/Observ
                     else {
                         alert('This subject was enrolled');
                     }
+                    //console.log(subject.id);
+                    var body = JSON.stringify({ subject: subject });
+                    //   let headers = new Headers({ 'Content-Type': 'application/json' });
+                    //   let options = new RequestOptions({ headers: headers });
+                    //console.log(body);
+                    //  return this.http.post(this.heroesUrl, body, options)
+                    //                  .map(this.extractData)
+                    //                  .catch(this.handleError);
                 };
                 EnrollService.prototype.extractData = function (res) {
                     if (res.status < 200 || res.status >= 300) {
